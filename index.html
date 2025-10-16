@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <style>
+    body {
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+    input {
+      padding: 5px;
+      font-size: 16px;
+    }
+    button {
+      padding: 5px 10px;
+      font-size: 16px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    ol {
+      display: inline-block;
+      text-align: left;
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button onclick="addTask()">Add</button>
+
+  <ol id="taskList"></ol>
+
+  <script>
+    const tasks = [];
+
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const task = taskInput.value.trim();
+
+      if (task !== '') {
+        tasks.push(task);
+        taskInput.value = '';
+        renderTasks();
+      }
+    }
+
+    function renderTasks() {
+      const taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+
+      tasks.forEach((t, index) => {
+        const li = document.createElement('li');
+        li.textContent = t;
+        taskList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
